@@ -503,6 +503,7 @@
           const card = document.createElement("div");
           card.className =
             "rounded-xl2 bg-tg-panel ring-1 ring-tg-ring p-4 md:p-5";
+          card.dataset.catId = cat.id;
 
           const head = `
           <div class="flex items-start justify-between gap-3">
@@ -514,12 +515,16 @@
                   : ""
               }
             </div>
+            <div class="shrink-0">
+              <button data-cat-toggle="${cat.id}" aria-expanded="${!state.collapsed.categories[cat.id]}" class="text-sm text-tg-dim hover:text-tg-text">▾</button>
+            </div>
           </div>
         `;
 
           const gridCls = "grid grid-cols-2 gap-4 mt-4";
           const list = document.createElement("div");
-          list.className = "mt-4";
+          list.className = "mt-4 cat-list";
+          if (state.collapsed.categories[cat.id]) list.classList.add("hidden");
 
           // helper to create a row for an item
           const createRow = (item) => {
@@ -565,11 +570,13 @@
           if (cat.subcategories) {
             cat.subcategories.forEach((sub) => {
               const subTitle = document.createElement("div");
-              subTitle.className = "mt-3";
-              subTitle.innerHTML = `<h4 class="text-sm font-medium">${sub.title}</h4>`;
+              subTitle.className = "mt-3 flex items-center justify-between";
+              subTitle.innerHTML = `<h4 class="text-sm font-medium">${sub.title}</h4><button data-sub-toggle="${sub.id}" aria-expanded="${!state.collapsed.subcategories[sub.id]}" class="text-sm text-tg-dim hover:text-tg-text">▾</button>`;
 
               const subGrid = document.createElement("div");
-              subGrid.className = gridCls;
+              subGrid.className = gridCls + " sub-grid";
+              subGrid.dataset.subId = sub.id;
+              if (state.collapsed.subcategories[sub.id]) subGrid.classList.add("hidden");
 
               sub.items.forEach((item) => {
                 subGrid.appendChild(createRow(item));
@@ -591,8 +598,6 @@
         });
       }
 
-      renderCategories();
-
       /* =========================================================
        ESTADO
     ========================================================== */
@@ -600,7 +605,11 @@
         isPartner: false,
         km: 0,
         selections: {}, // id -> qty
+        collapsed: { categories: {}, subcategories: {} },
       };
+
+      // agora que o state existe, renderiza categorias
+      renderCategories();
 
       /* =========================================================
        VINCULA EVENTOS
@@ -659,6 +668,35 @@
         if (e.target.type === "checkbox") {
           state.selections[itemId] = e.target.checked ? 1 : 0;
           calcAndRender();
+        }
+      });
+
+      // Collapse / expand categories and subcategories
+      $("#categories").addEventListener("click", (e) => {
+        const catBtn = e.target.closest("[data-cat-toggle]");
+        if (catBtn) {
+          const id = catBtn.dataset.catToggle;
+          const card = catWrap.querySelector(`[data-cat-id="${id}"]`);
+          if (!card) return;
+          const listEl = card.querySelector(".cat-list");
+          const expanded = !(listEl.classList.contains("hidden"));
+          if (expanded) listEl.classList.add("hidden");
+          else listEl.classList.remove("hidden");
+          state.collapsed.categories[id] = !expanded;
+          catBtn.setAttribute("aria-expanded", String(!state.collapsed.categories[id]));
+          return;
+        }
+
+        const subBtn = e.target.closest("[data-sub-toggle]");
+        if (subBtn) {
+          const id = subBtn.dataset.subToggle;
+          const subGrid = catWrap.querySelector(`.sub-grid[data-sub-id="${id}"]`);
+          if (!subGrid) return;
+          const expanded = !(subGrid.classList.contains("hidden"));
+          if (expanded) subGrid.classList.add("hidden");
+          else subGrid.classList.remove("hidden");
+          state.collapsed.subcategories[id] = !expanded;
+          subBtn.setAttribute("aria-expanded", String(!state.collapsed.subcategories[id]));
         }
       });
 
