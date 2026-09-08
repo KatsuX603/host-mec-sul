@@ -27,10 +27,10 @@
                 card: "#17171C",
                 soft: "#23232A",
                 ring: "#2B2B33",
-                red: "#D41920",
+                red: "#ff0000",
                 text: "#E8E8F0",
-                dim: "#B9BBC6",
-                green: "#22C55E",
+                dim: "#ff0000",
+                green: "#ff0000",
               },
             },
             boxShadow: {
@@ -58,7 +58,7 @@
           var(--tw-ring-shadow, 0 0 #0000);
       }
       .switch input:checked + span {
-        background: #16a34a;
+        background: #ff0000;
       }
       .switch input:checked + span::after {
         transform: translateX(20px);
@@ -266,7 +266,7 @@
               {
                 id: "elevador_hidraulico",
                 label: "Elevador hidráulico",
-                type: "qty",
+                type: "toggle",
                 price: 2500,
               },
               { 
@@ -280,136 +280,69 @@
           {
             id: "tuning",
             title: "Tunagem",
-            items: [
+            subcategories: [
               {
-                id: "turbo",
-                label: "Turbo",
-                type: "toggle",
-                price: 40000,
+                id: "tuning_turbo",
+                title: "Turbo",
+                items: [
+                  {
+                    id: "turbo",
+                    label: "Turbo",
+                    type: "toggle",
+                    price: 40000,
+                  },
+                ],
               },
               {
-                id: "motor1",
-                label: "Motor 1",
-                type: "toggle",
-                price: 28750,
+                id: "tuning_motor",
+                title: "Motor",
+                items: [
+                  { id: "motor1", label: "Motor 1", type: "toggle", price: 28750 },
+                  { id: "motor2", label: "Motor 2", type: "toggle", price: 47500 },
+                  { id: "motor3", label: "Motor 3", type: "toggle", price: 66250 },
+                  { id: "motor4", label: "Motor 4", type: "toggle", price: 85000 },
+                ],
               },
               {
-                id: "motor2",
-                label: "Motor 2",
-                type: "toggle",
-                price: 47500,
+                id: "tuning_freio",
+                title: "Freio",
+                items: [
+                  { id: "freio1", label: "Freio 1", type: "toggle", price: 20000 },
+                  { id: "freio2", label: "Freio 2", type: "toggle", price: 30000 },
+                  { id: "freio3", label: "Freio 3", type: "toggle", price: 40000 },
+                  { id: "freio4", label: "Freio 4", type: "toggle", price: 50000 },
+                ],
               },
               {
-                id: "motor3",
-                label: "Motor 3",
-                type: "toggle",
-                price: 66250,
+                id: "tuning_transmissao",
+                title: "Transmissão",
+                items: [
+                  { id: "trasmissao1", label: "Transmissão 1", type: "toggle", price: 20000 },
+                  { id: "trasmissao2", label: "Transmissão 2", type: "toggle", price: 30000 },
+                  { id: "trasmissao3", label: "Transmissão 3", type: "toggle", price: 40000 },
+                  { id: "trasmissao4", label: "Transmissão 4", type: "toggle", price: 50000 },
+                ],
               },
               {
-                id: "motor4",
-                label: "Motor 4",
-                type: "toggle",
-                price: 85000,
+                id: "tuning_suspensao",
+                title: "Suspensão",
+                items: [
+                  { id: "suspensao1", label: "Suspensão 1", type: "toggle", price: 20000 },
+                  { id: "suspensao2", label: "Suspensão 2", type: "toggle", price: 30000 },
+                  { id: "suspensao3", label: "Suspensão 3", type: "toggle", price: 40000 },
+                  { id: "suspensao4", label: "Suspensão 4", type: "toggle", price: 50000 },
+                ],
               },
               {
-                id: "freio1",
-                label: "Freio 1",
-                type: "toggle",
-                price: 20000,
-              },
-              {
-                id: "freio2",
-                label: "Freio 2",
-                type: "toggle",
-                price: 30000,
-              },
-              {
-                id: "freio3",
-                label: "Freio 3",
-                type: "toggle",
-                price: 40000,
-              },
-              {
-                id: "freio4",
-                label: "Freio 4",
-                type: "toggle",
-                price: 50000,
-              },
-              {
-                id: "trasmissao1",
-                label: "Transmissão 1",
-                type: "toggle",
-                price: 20000,
-              },
-              {
-                id: "trasmissao2",
-                label: "Transmissão 2",
-                type: "toggle",
-                price: 30000,
-              },
-              {
-                id: "trasmissao3",
-                label: "Transmissão 3",
-                type: "toggle",
-                price: 40000,
-              },
-              {
-                id: "trasmissao4",
-                label: "Transmissão 4",
-                type: "toggle",
-                price: 50000,
-              },
-              {
-                id: "suspensão1",
-                label: "Suspensão 1",
-                type: "toggle",
-                price: 20000,
-              },
-              {
-                id: "suspensão2",
-                label: "Suspensão 2",
-                type: "toggle",
-                price: 30000,
-              },
-              {
-                id: "suspensão3",
-                label: "Suspensão 3",
-                type: "toggle",
-                price: 40000,
-              },
-              {
-                id: "suspensão4",
-                label: "Suspensão 4",
-                type: "toggle",
-                price: 50000,
-              },{
-                id: "blindagem1",
-                label: "Blindagem 1",
-                type: "toggle",
-                price: 20000,
-              },
-              {
-                id: "blindagem2",
-                label: "Blindagem 2",
-                type: "toggle",
-                price: 30000,
-              },
-              {
-                id: "blindagem3",
-                label: "Blindagem 3",
-                type: "toggle",
-                price: 40000,
-              },
-              {
-                id: "blindagem4",
-                label: "Blindagem 4",
-                type: "toggle",
-                price: 50000,
-              },{
-                id: "blindagem5",
-                label: "Blindagem 5",
-                type: "toggle",
-                price: 60000,
+                id: "tuning_blindagem",
+                title: "Blindagem",
+                items: [
+                  { id: "blindagem1", label: "Blindagem 1", type: "toggle", price: 20000 },
+                  { id: "blindagem2", label: "Blindagem 2", type: "toggle", price: 30000 },
+                  { id: "blindagem3", label: "Blindagem 3", type: "toggle", price: 40000 },
+                  { id: "blindagem4", label: "Blindagem 4", type: "toggle", price: 50000 },
+                  { id: "blindagem5", label: "Blindagem 5", type: "toggle", price: 60000 },
+                ],
               },
             ],
           },
@@ -584,19 +517,18 @@
           </div>
         `;
 
-          const gridCls = cat.twoCols
-            ? "grid md:grid-cols-2 gap-4 mt-4"
-            : "grid gap-4 mt-4";
+          const gridCls = "grid grid-cols-2 gap-4 mt-4";
           const list = document.createElement("div");
-          list.className = gridCls;
+          list.className = "mt-4";
 
-          cat.items.forEach((item) => {
+          // helper to create a row for an item
+          const createRow = (item) => {
             const row = document.createElement("div");
             row.className =
               "flex items-center justify-between gap-3 rounded-lg bg-tg.soft ring-1 ring-tg-ring px-3 py-3";
             row.dataset.itemId = item.id;
-            let control = "";
 
+            let control = "";
             if (item.type === "toggle") {
               control = `
               <label class="switch relative inline-flex items-center cursor-pointer">
@@ -626,8 +558,32 @@
             </div>
           `;
 
-            list.appendChild(row);
-          });
+            return row;
+          };
+
+          // If the category has subcategories, render each with a title
+          if (cat.subcategories) {
+            cat.subcategories.forEach((sub) => {
+              const subTitle = document.createElement("div");
+              subTitle.className = "mt-3";
+              subTitle.innerHTML = `<h4 class="text-sm font-medium">${sub.title}</h4>`;
+
+              const subGrid = document.createElement("div");
+              subGrid.className = gridCls;
+
+              sub.items.forEach((item) => {
+                subGrid.appendChild(createRow(item));
+              });
+
+              list.appendChild(subTitle);
+              list.appendChild(subGrid);
+            });
+          } else if (cat.items) {
+            const grid = document.createElement("div");
+            grid.className = gridCls;
+            cat.items.forEach((item) => grid.appendChild(createRow(item)));
+            list.appendChild(grid);
+          }
 
           card.innerHTML = head;
           card.appendChild(list);
@@ -738,8 +694,16 @@
     ========================================================== */
       function findItem(id) {
         for (const c of CONFIG.categories) {
-          const found = c.items.find((i) => i.id === id);
-          if (found) return found;
+          if (c.items) {
+            const found = c.items.find((i) => i.id === id);
+            if (found) return found;
+          }
+          if (c.subcategories) {
+            for (const sc of c.subcategories) {
+              const found = sc.items.find((i) => i.id === id);
+              if (found) return found;
+            }
+          }
         }
         return null;
       }
@@ -784,15 +748,10 @@
         let subtotal = 0;
 
         CONFIG.categories.forEach((cat) => {
-          cat.items.forEach((it) => {
+          const handleItem = (it) => {
             const qty = state.selections[it.id] || 0;
             if (it.type === "toggle" && qty === 1) {
-              items.push({
-                label: it.label,
-                qty: 1,
-                price: it.price,
-                total: it.price,
-              });
+              items.push({ label: it.label, qty: 1, price: it.price, total: it.price });
               subtotal += it.price;
             }
             if (it.type === "qty" && qty > 0) {
@@ -800,7 +759,10 @@
               items.push({ label: it.label, qty, price: it.price, total });
               subtotal += total;
             }
-          });
+          };
+
+          if (cat.items) cat.items.forEach(handleItem);
+          if (cat.subcategories) cat.subcategories.forEach((sc) => sc.items.forEach(handleItem));
         });
 
         // Atendimento externo
@@ -868,20 +830,32 @@
 
         CONFIG.categories.forEach((cat) => {
           const catLines = [];
-          cat.items.forEach((it) => {
+
+          const pushIfSelected = (it, targetArray) => {
             const qty = state.selections[it.id] || 0;
-            if (
-              (it.type === "toggle" && qty) ||
-              (it.type === "qty" && qty > 0)
-            ) {
+            if ((it.type === "toggle" && qty) || (it.type === "qty" && qty > 0)) {
               const total = it.type === "toggle" ? it.price : qty * it.price;
-              catLines.push(
-                `- ${it.label} ${
-                  it.type === "qty" ? `(x${qty})` : ""
-                } = ${BRL.format(total)}`
-              );
+              targetArray.push(`- ${it.label} ${it.type === "qty" ? `(x${qty})` : ""} = ${BRL.format(total)}`);
             }
-          });
+          };
+
+          // items directly under the category
+          if (cat.items) {
+            cat.items.forEach((it) => pushIfSelected(it, catLines));
+          }
+
+          // subcategories: include subheading and their lines
+          if (cat.subcategories) {
+            cat.subcategories.forEach((sub) => {
+              const subLines = [];
+              sub.items.forEach((it) => pushIfSelected(it, subLines));
+              if (subLines.length) {
+                catLines.push(sub.title.toUpperCase());
+                catLines.push(...subLines);
+              }
+            });
+          }
+
           if (catLines.length) {
             lines.push(cat.title.toUpperCase());
             lines.push(...catLines);
